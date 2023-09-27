@@ -23,7 +23,7 @@ import cartReducers from './reducers/cartReducers';
 
 const reducers = combineReducers({
   productsStore: productsReducer,  //{count: 0,}
-  cartData: cartReducers       //{ todos:[]}
+  cartItems: cartReducers       //{ todos:[]}
 })
 
 const store = createStore(reducers, applyMiddleware(thunk));

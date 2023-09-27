@@ -35,16 +35,26 @@ const initialState = {
   export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
   export const FETCH_PRODUCTS_FAILURE = 'FETCH_PRODUCTS_FAILURE';
   export const SORT_PRODUCTS_BY_PRICE = 'SORT_PRODUCTS_BY_PRICE';
-  
+  export const SET_PRODUCT = 'SET_PRODUCT'
   export const productsReducer = (state = initialState, action) => {
     console.log("action is",action );
     switch (action.type) {
       case FETCH_PRODUCTS:
         return {
           ...state,
-          products: action.products,
+          products: action.payload,
           error: null,
         };
+        case SET_PRODUCT:
+          const productList = state.products
+          console.log("productList :", productList);
+          productList.push(action.payload)
+          return {
+            ...state,
+            products: productList,
+            error: null,
+          };
+          
       case FETCH_PRODUCTS_REQUEST:
         return {
           ...state,

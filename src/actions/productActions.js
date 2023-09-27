@@ -1,5 +1,5 @@
 // actions/productActions.js
-import {FETCH_PRODUCTS, FETCH_PRODUCTS_REQUEST,FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE,SORT_PRODUCTS_BY_PRICE} from './actions'
+import {FETCH_PRODUCTS, SET_PRODUCT,FETCH_PRODUCTS_REQUEST,FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE,SORT_PRODUCTS_BY_PRICE} from './actions'
 
 // Action type constants
 //export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
@@ -251,12 +251,26 @@ const fetchData = async () => {
 export const fetchProducts = () => async (dispatch) => {
   const products = await fetchData();
   console.log("the response is ", products);
+  console.log("Making call here...")
+console.log("the payload that will be sent is",products)
+
   dispatch ({
     type:FETCH_PRODUCTS,
     payload: products
   })
 };
 
+export const setProduct = (product) => async (dispatch) => {
+  //const products = await fetchData();
+  console.log("the response is ", product);
+  console.log("Making call here...")
+console.log("the payload that will be sent is",product)
+
+  dispatch ({
+    type:SET_PRODUCT,
+    payload: product
+  })
+};
 
 
 export const sortProducts = (items, sort) => (dispatch) => {
