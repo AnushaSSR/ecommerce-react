@@ -1,13 +1,45 @@
 import React from 'react'
 import Navbar from './Navbar'
 import { useState } from 'react';
+import { Link, NavLink,useNavigate } from "react-router-dom";
+import {useDispatch, useSelector} from 'react-redux'
+import { addProduct,handleSubmit} from '../actions/productActions';
+import '../assets/css/addProduct.css'
+//import handleSubmit from './handleSubmit';
+//import handleSubmit from './handleSubmit';
+import { useRef } from 'react';
+import image from '../assets/images/comingsoon.jpg'
+
 
 const AddProduct = () => {
+  const [product, setProduct] = useState({title: '', description: '', price: '' ,thumbnail: image,category:"smartPhone",images:[image,image],rating:5});
+  const navigate = useNavigate()
+ 
+  const dispatch = useDispatch();
 
     const [input, setInput] = useState("");
+    const [name,setName] = useState('')
 
-/*    const onAddHandler = () => {
-        dispatch(setTodos(todoArr))
+    const handleChange = (e) => {
+      console.log("the element value is",e)
+      const { name, value } = e.target;
+  setName(value)
+console.log("name is ",name)
+console.log("product  is ",product)
+      setProduct({ ...product, [name]: value});
+    };
+  //    const dataRef = useRef()
+ 
+/*    const submithandler = (e) => {
+      e.preventDefault()
+      handleSubmit(dataRef.current.value)
+      dataRef.current.value = ""
+    }*/
+   
+    
+  
+  /*  const onAddHandler = () => {
+        dispatch(setProduct(todoArr))
         if (!input) return;
         const todo = {
           id: uuidv4().split("-")[0],
@@ -19,88 +51,104 @@ const AddProduct = () => {
         setTodoArr([...todoArr, todo]);
         setInput("");
       };*/
+      const titleRef = useRef()
+      const nameRef = useRef()
+      const descRef = useRef()
+      const priceRef = useRef()
+       
+      const brandRef = useRef()
+      const ratingRef = useRef()
+      const catRef = useRef()
+      // let data = ({ name: nameRef.current.value, description: descRef.current.value, price: priceRef.current.value })
+      const submithandler = (e) => {
+        e.preventDefault()
+        //console.log("inside submithandler", dataRef)
+        console.log("product  is ",product)
+
+        handleSubmit(product,dispatch)
+
+        //dataRef.current.value = ""
+       titleRef.current.value = ''
+        descRef.current.value = '' 
+        priceRef.current.value = ''
+        brandRef.current.value = ''
+        ratingRef.current.value = 'Select rating'
+        catRef.current.value = 'Select Category'
+
+        navigate(`/products`);
+
+        //data = ({ name: '', description: '', price: '' })
+      }
+      
+
+  /*const handleSubmit = (e) => {
+    e.preventDefault();
+    //dispatch(addProduct(product)); // Dispatch the action to add the product
+    setProduct({ name: '', description: '', price: '' }); // Clear the form
+  };*/
+
+
+  
+ /* const onHandleCreate = async () => {
+    const apiResponse = await createProduct(values);
+    if (apiResponse.status === 200) {
+      success(apiResponse.data.message);
+      navigate("/products");
+    } else {
+      error(apiResponse.data.message);
+    }
+  };*/
+
 
   return (
-    <div><Navbar/>
-    AddProduct  
-          <div className="d-flex justify-content-center">
-        <input
-          type="text"
-          className="form-control w-75"
-          value={input}
-          placeholder="Add Todo"
-          onChange={(e) => setInput(e.target.value)}
-        />
-          <button
-            className="ms-2 btn btn-secondary"
-            // onClick={() => onAddHandler()}
-          >
-            Add
-          </button>
-      </div>
-    {/* <div>
-
-    <div className="fs-2 mb-3">
-      {/* {productData ? "Update Product" : "Create Product"} 
-      <div className="w-50 m-auto my-4">
-        <input
-          className="form-control mt-2"
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={values.name}
-          onChange={(e) => onInputChange(e)}
-        />
-        <input
-          className="form-control mt-2"
-          type="text"
-          name="description"
-          placeholder="description"
-          value={values.description}
-          onChange={(e) => onInputChange(e)}
-        />
-        <input
-          className="form-control mt-2"
-          type="text"
-          name="price"
-          placeholder="price"
-          value={values.price}
-          onChange={(e) => onInputChange(e)}
-        />
-        <input
-          className="form-control mt-2"
-          type="text"
-          name="quantity"
-          placeholder="quantity"
-          value={values.quantity}
-          onChange={(e) => onInputChange(e)}
-        />
-        <select
-          value={values.category}
-          name="category"
-          className="form-select  my-3"
-          onChange={(e) => onInputChange(e)}
-        >
-          <option value="">None</option>
-          {categories.map((cat) => (
-            <option value={cat._id}>{cat.name}</option>
-          ))}
-        </select>
-      </div>
-      <div>
-        {productData ? (
-          <div className="btn btn-warning" onClick={() => onHandleUpdate()}>
-            Update
-          </div>
-        ) : (
-          <div className="btn btn-success" onClick={() => onHandleCreate()}>
-            Create
-          </div>
-        )}
-      </div>
-    </div>
-  </div>*/}
-  </div>
+    <>
+    
+      <Navbar/>
+      <div id="form-container" className="product-form">
+      <h2>Add Product</h2>
+      <form onSubmit={submithandler}>
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
+          <input type="text" id="title" name="title" value={product.title} onChange={handleChange} ref={titleRef} />
+        </div>
+         <div className="form-group">
+          <label htmlFor="description">Description:</label>
+          <input type="text" id="description" name="description" value={product.description} onChange={handleChange} ref={descRef}/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="brand">Brand:</label>
+          <input type="text" id="brand" name="brand" value={product.brand} onChange={handleChange}  ref={brandRef}/>
+        </div> 
+        <div className="form-group">
+          <label htmlFor="brand">Price:</label>
+          <input type="number" id="price" name="price" value={product.price} onChange={handleChange}  ref={priceRef}/>
+        </div> 
+        <div className="form-group">
+          <label htmlFor="rating">Rating:</label>
+          <select id="rating" name="rating" value={product.rating} onChange={handleChange} defaultValue={5} ref={ratingRef}>
+            <option value={1}>1</option>
+            <option value={2} default>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+          </select>
+        </div> 
+        <div className="form-group">
+          <label htmlFor="category">Category:</label>
+          <select type="text" id="category" name="category" value={product.category} onChange={handleChange}  defaultValue ={"smartPhone"}ref={catRef}>
+            <option value={"smartPhone"}>SmartPhone</option>
+            <option value={"Laptops"}>Laptops</option>
+            <option value={"Clothing"}>Clothing</option>
+            <option value={"Watches"}>Watches</option>
+            <option value={"Cycle"}>Cycle</option>
+          </select>
+        </div> 
+        
+        <button type="submit" className="add-button" >Add Product</button>
+      </form>
+    </div>    
+    
+  </>
   )
 }
 

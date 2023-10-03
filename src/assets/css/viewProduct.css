@@ -1,0 +1,82 @@
+/*stylling to control the overflow in x direction*/
+body {
+    overflow-x: hidden;
+}
+
+/*main element*/
+main {
+    border: 3px solid gold;
+}
+
+/* navigation bar */
+.nav-item {
+    margin-left: 80px;
+}
+
+/* Display the movie details */
+#product-details-container {
+    display: flex;
+    background-color: rgb(46, 17, 51);
+    flex-direction: column;
+    color: whitesmoke;
+    border: 1px solid gold;
+}
+
+/*styling for plot, deatails like year ratings*/
+
+.btn-style {
+    border: 3% solid black;
+    background-color: black;
+    color: yellow;
+    border-radius: 5%;
+    cursor: none;
+}
+
+.title {
+    margin: 0% 2% 0% 2%;
+    font-variant: small-caps;
+    font-weight: bolder;
+    color: goldenrod;
+}
+.description {
+    color: palegoldenrod;
+    font-size: large;
+    margin: 0% 2% 0% 5%;
+    font-size: 1.5rem;
+}
+.product-details {
+    width: 100%;
+    display: inline-flex;
+    margin: 6%;
+}
+.product-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    width: 40%;
+}
+.fa-star {
+    color: goldenrod;
+}
+
+
+
+/*Add to cart button styling*/
+
+#fav {
+    background-color: gold;
+    display: flex;
+    justify-content: center;
+}
+#cartSpan {
+    text-align: left;
+}
+#addtoCart {
+    background-color: gold;
+}
+#favIcon {
+    color: red;
+}
+.hr {
+    color: rgba(20, 18, 25, 0);
+}

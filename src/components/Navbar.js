@@ -5,14 +5,14 @@ import {useDispatch, useSelector} from 'react-redux'
 import logo from "../assets/images/logo.png";
 import cart from "../assets/images/cart.webp";
 import Avatar from "./Avatar";
-import "./Navbar.css"
+import "../assets/css/Navbar.css"
 
 //import Avatar from "../Avatar/Avatar";
 
 const Navbar = () => {
     const storeData = useSelector((store) => {return store});
     let cartCount = 0
-    const cartItems=  storeData.cartItems.items
+    const cartItems= storeData.cartItems.items// JSON.parse(localStorage.getItem("cartItems"))//storeData.cartItems.items
     cartItems.forEach(item => {
 //        console.log(item.count)
         cartCount +=item.count
@@ -36,11 +36,11 @@ const Navbar = () => {
       </div>
       <div className="cart-user-links">
         <Link to="/cart" className="nav-item">
-          <img style={{ width: "50px" }} src={cart} alt="cart"></img>
+          <img style={{ width: "50px" }} src={cart} alt="cart"></img>        <h5>{cartCount}</h5>
+
         </Link>
-        <h5>{cartCount}</h5>
 
-
+{/* 
         <div className="user-links">
           {User === null ? (
             <Link to="/Auth" className="nav-item nav-links">
@@ -54,7 +54,7 @@ const Navbar = () => {
               <button className="nav-item nav-links"> Log Out</button>
             </>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

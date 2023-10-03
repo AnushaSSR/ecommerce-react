@@ -17,3 +17,16 @@ button {
     background-color: aqua;
 
   }
+
+ #view-products {
+
+  color:rgb(46, 17, 51);
+ }
+ #addTocart-btn {
+  background-color: rgb(46, 17, 51);
+
+ }
+ #products-container {
+  background-color: rgb(46, 17, 51);
+
+ }
