@@ -1,8 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+//to dsiplay success notification
 export const success = (message, duration = 3000) => {
-  console.log("inside th esucces of taost");
   toast.success(message, {
     position: "top-right",
     autoClose: duration,
@@ -15,6 +14,7 @@ export const success = (message, duration = 3000) => {
   });
 };
 
+//to dsiplay error notification
 export const error = (message, duration = 3000) => {
   toast.error(message, {
     position: "top-right",

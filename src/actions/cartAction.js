@@ -1,7 +1,5 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART , DEC_PRODUCT_QUANTITY} from "./actions";
-import { error, success } from "../utils/notificationUtils"//C:\Users\nssra\OneDrive\Desktop\ecommerce-react-redux\src\utils\notificationUtils,js";
 
-import {toast} from "react-toastify"
 let message =''
 export const addToCart = (items, product, dispatch) => {
     console.log("adding to cart",items, product, dispatch);

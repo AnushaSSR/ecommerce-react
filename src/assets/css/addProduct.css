@@ -1,15 +1,6 @@
 /* ProductForm.css */
 
 #form-container {
-    background-image: url("../images/background1.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.9;
     margin-top: 2px;
     position: relative;
     height: 100vh;

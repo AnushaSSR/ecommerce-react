@@ -13,29 +13,24 @@ import ViewProduct from './components/ViewProduct';
 import { ToastContainer } from 'react-toastify';
 
 
-//import { initializeApp } from "firebase/app";
-//import firebaseConfig from "./firebaseConfig"; // Import your Firebase config object
-
-//const app = initializeApp(firebaseConfig);
 function App() {
-  
+
   return (
-      <div className="App">
-        <ToastContainer/>
-        <Router>
+    <div className="App">
+      <ToastContainer />
+      <Router>
         <Routes>
-      
-        <Route exact path="/" element={<Home/>} />
-        <Route exact path="/products" element={<ProductList/>} />
-        <Route exact path = "/addProduct" element = {<AddProduct/>} />
-        <Route exact path = "/cart" element = {<Cart/>} />
-        <Route path="/viewProduct/:id" element = {<ViewProduct/>} />
-        
-          </Routes> 
-          
-          {/* Add your shopping cart component here */}
-        </Router>
-      </div>
+
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/products" element={<ProductList />} />
+          <Route exact path="/addProduct" element={<AddProduct />} />
+          <Route exact path="/cart" element={<Cart />} />
+          <Route path="/viewProduct/:id" element={<ViewProduct />} />
+
+        </Routes>
+
+      </Router>
+    </div>
   );
 }
 
